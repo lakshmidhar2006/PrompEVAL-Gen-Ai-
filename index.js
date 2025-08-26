@@ -1,7 +1,8 @@
 // index.js
 
 const zeroShotPrompt = require('./concepts/zeroshot');
-const multiShotPrompt = require('./concepts/multiShot');
+const multiShotPrompt = require('./concepts/multishot');
+const dynamicPrompt = require('./concepts/dynamicprompt');
 
 // Zero-shot example
 const zeroShotPromptText = 'Explain how zero-shot prompting works for large language models and provide an example of its use case.';
@@ -19,4 +20,12 @@ const multiShotExamples = [
 const newTextForMultiShot = "The book was boring, but the characters were interesting.";
 multiShotPrompt(multiShotExamples, newTextForMultiShot).then((multiShotResponse) => {
     console.log('Multi-shot Prompt Response:', multiShotResponse);
+});
+
+// Dynamic prompting example
+const basePrompt = 'Explain the concept of dynamic prompting in AI models.';
+const tone = 'formal';  // Change to 'informal' for casual tone
+const detailLevel = 'detailed';  // Change to 'brief' or 'detailed'
+dynamicPrompt(basePrompt, tone, detailLevel).then((dynamicResponse) => {
+    console.log('Dynamic Prompt Response:', dynamicResponse);
 });
