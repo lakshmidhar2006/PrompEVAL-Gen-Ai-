@@ -4,7 +4,7 @@ const axios = require('axios');
 
 const geminiAPIKey = 'YOUR_GEMINI_API_KEY'; // Replace with your Gemini API key
 
-const dynamicPrompt = async (basePrompt, tone = 'informal', detailLevel = 'normal') => {
+const dynamicPrompt = async (basePrompt, tone = 'informal', detailLevel = 'normal', topP = 0.9) => {
     const endpoint = 'https://api.gemini.com/v1/completions'; // Replace with actual Gemini API endpoint
     const headers = {
         'Authorization': `Bearer ${geminiAPIKey}`,
@@ -30,6 +30,7 @@ const dynamicPrompt = async (basePrompt, tone = 'informal', detailLevel = 'norma
         prompt: dynamicPromptText,
         max_tokens: 150,
         temperature: 0.7,  // Adjust model behavior
+        top_p: topP,       // Include Top-P sampling
     };
 
     try {
